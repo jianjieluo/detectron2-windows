@@ -1,6 +1,6 @@
 ### Requirements
 - Python >= 3.6(Conda)
-- PyTorch 1.3
+- PyTorch 1.6
 - [torchvision](https://github.com/pytorch/vision/) that matches the PyTorch installation.
 	You can install them together at [pytorch.org](https://pytorch.org) to make sure of this.
 - OpenCV, needed by demo and visualization
@@ -11,12 +11,12 @@
 ### several files must be changed by manually.
 ```
 file1: 
-  {your evn path}\Lib\site-packages\torch\include\torch\csrc\jit\argument_spec.h
+  {your evn path}\Lib\site-packages\torch\include\torch\csrc\jit\runtime\argument_spec.h
   example:
-  {C:\Miniconda3\envs\py36}\Lib\site-packages\torch\include\torch\csrc\jit\argument_spec.h(190)
-    static constexpr size_t DEPTH_LIMIT = 128;
+  {C:\Miniconda3\envs\py36}\Lib\site-packages\torch\include\torch\csrc\jit\runtime\argument_spec.h(190)
+    static constexpr size_t ARG_SPEC_DEPTH_LIMIT = 128;
       change to -->
-    static const size_t DEPTH_LIMIT = 128;
+    static const size_t ARG_SPEC_DEPTH_LIMIT = 128;
 file2: 
   {your evn path}\Lib\site-packages\torch\include\pybind11\cast.h
   example:
@@ -32,11 +32,11 @@ After having the above dependencies, run:
 ```
 conda activate {your env}
 
-"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
 
-git clone https://github.com/conansherry/detectron2
+git clone https://github.com/jianjieluo/detectron2-windows
 
-cd detectron2
+cd detectron2-windows
 
 python setup.py build develop
 ```
